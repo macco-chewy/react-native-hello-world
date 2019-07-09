@@ -7,6 +7,7 @@
  */
 
 import React, { Fragment } from 'react';
+
 import {
   SafeAreaView,
   StyleSheet,
@@ -23,6 +24,8 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+
+import TestComponent from 'components/TestComponent';
 
 const App = () => {
   return (
@@ -63,6 +66,7 @@ const App = () => {
           </View>
         </ScrollView>
       </SafeAreaView>
+      <TestComponent />
     </Fragment>
   );
 };
