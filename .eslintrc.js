@@ -20,18 +20,24 @@ module.exports = {
   },
   plugins: ['react', 'react-native', 'jsx-a11y', 'import', 'jest'],
   rules: {
+    'import/prefer-default-export': 'off',
+    'react/destructuring-assignment': 'off',
+    'react/forbid-prop-types': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'react/jsx-one-expression-per-line': 'off',
-    'import/prefer-default-export': 'off',
+    'react/require-default-props': 'off',
   },
   settings: {
     'import/resolver': {
       'babel-module': {
         alias: {
-          actions: './src/view/actions',
+          Actions: './src/actions',
+          api: './src/api',
           components: './src/view/components',
+          constants: './src/constants',
           containers: './src/view/containers',
           reducers: './src/reducers',
+          store: './src/store',
         },
       },
     },
