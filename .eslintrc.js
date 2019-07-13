@@ -37,6 +37,7 @@ module.exports = {
           constants: './src/constants',
           containers: './src/view/containers',
           reducers: './src/reducers',
+          screens: './src/view/screens',
           store: './src/store',
         },
       },

@@ -1,69 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
-import {
-  TouchableHighlight, View, Text, StyleSheet,
-} from 'react-native';
+import Home from 'screens/Home';
+import Fetch from 'screens/Fetch';
+import Test from 'screens/Test';
 
-import { connect } from 'react-redux';
-import { testFetch } from 'Actions/testFetch';
-
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 100,
-  },
-  text: {
-    textAlign: 'center',
-  },
-  button: {
-    height: 60,
-    margin: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#0b7eff',
-  },
-  buttonText: {
-    color: 'white',
-  },
+const Navigator = createStackNavigator({
+  Home: { screen: Home },
+  Fetch: { screen: Fetch },
+  Test: { screen: Test },
 });
 
-const App = props => (
-  <View style={styles.container}>
-    <Text style={styles.text}>Hello World</Text>
-    <TouchableHighlight style={styles.button} onPress={() => props.testFetch()}>
-      <Text style={styles.buttonText}>Load Data</Text>
-    </TouchableHighlight>
+const App = createAppContainer(Navigator);
 
-    <View>
-      {props.isFetching && <Text>Loading</Text>}
-      {props.data
-        && props.data.length
-        && props.data.map(person => (
-          <View key={person.id}>
-            <Text>Name: {person.name}</Text>
-            <Text>Age: {person.age}</Text>
-          </View>
-        ))}
-    </View>
-  </View>
-);
-
-App.propTypes = {
-  data: PropTypes.any,
-  isFetching: PropTypes.bool,
-  testFetch: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = state => ({
-  data: state.testFetch,
-  isFetching: state.global.fetch.active,
-});
-
-const actions = {
-  testFetch,
-};
-
-export default connect(
-  mapStateToProps,
-  actions,
-)(App);
+export default App;
